@@ -2,22 +2,24 @@ import 'package:flutter/material.dart';
 import 'segunda_tela.dart';
 
 class TelaInicial extends StatelessWidget {
+  TelaInicial({super.key});
 
-  const TelaInicial({super.key});
+  final nome = TextEditingController();
+  final email = TextEditingController();
 
-  // Método criado para abrir a proxima tela
-  // Recebe o contexto da aplicação
   void abrirSegundaTela(BuildContext context) {
-    // Navigator é responsável pela navegação
-    // push() abre uma nova tela
     Navigator.push(
       // contexto atual do aplicativo
       context,
       // informa qual tela será aberta
       MaterialPageRoute(
       builder: (context)
-      // abre SegundaTela
-      => const SegundaTela(),
+      => SegundaTela(
+        // envia o texto digitado
+        nome: nome.text,
+        // envia o texto digitado
+        email: email.text,
+      ),
       ),
     );
   }
@@ -31,14 +33,38 @@ class TelaInicial extends StatelessWidget {
           "Tela Inicial",
         ),
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            abrirSegundaTela(context);
-          },
-          child: const Text(
-            "Abrir segunda tela",
-          ),
+      body: Padding(
+        padding:
+            const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            TextField(
+              controller: nome,
+              decoration:
+                const InputDecoration(
+                  labelText:
+                      "Digite seu nome",
+                ),
+            ),
+
+            TextField(
+              controller: email,
+              decoration:
+                  const InputDecoration(
+                    labelText:
+                        "Digite seu email",
+                  ),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    abrirSegundaTela(
+                      context
+                    );
+                  },
+                  child: const Text("Enviar"),
+                ),
+          ],
         ),
       ),
     );
