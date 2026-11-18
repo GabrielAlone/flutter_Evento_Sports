@@ -4,14 +4,14 @@ class SegundaTela extends StatelessWidget {
   // Variável que recebe o nome enviado
   final String nome;
   // Variável que recebe o email enviado
-  final String email;
+  final num quantidade;
 
   const SegundaTela({
     super.key,
     // required obriga receber valor
     required this.nome,
     //required obriga receber valor
-    required this.email,
+    required this.quantidade,
   });
 
 
@@ -37,12 +37,12 @@ class SegundaTela extends StatelessWidget {
           children: [
             // Mostra o nome recebido
             Text(
-              "Nome: $nome",
+              "Organizador: $nome",
               style:
                   const TextStyle(fontSize: 25),
             ),
             // Mostra o emial recebido
-            Text("Email: $email",
+            Text("Times: $quantidade",
               style:
                   const TextStyle(fontSize: 25),
             ),

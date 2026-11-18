@@ -5,7 +5,7 @@ class TelaInicial extends StatelessWidget {
   TelaInicial({super.key});
 
   final nome = TextEditingController();
-  final email = TextEditingController();
+  final quantidade = TextEditingController();
 
   void abrirSegundaTela(BuildContext context) {
     Navigator.push(
@@ -18,7 +18,7 @@ class TelaInicial extends StatelessWidget {
         // envia o texto digitado
         nome: nome.text,
         // envia o texto digitado
-        email: email.text,
+        quantidade: int.parse(quantidade.text),
       ),
       ),
     );
@@ -40,19 +40,21 @@ class TelaInicial extends StatelessWidget {
           children: [
             TextField(
               controller: nome,
+              keyboardType: TextInputType.number,
               decoration:
                 const InputDecoration(
                   labelText:
-                      "Digite seu nome",
+                      "Nome Do Organizador",
                 ),
             ),
 
             TextField(
-              controller: email,
+              controller: quantidade,
+              keyboardType: TextInputType.number,
               decoration:
                   const InputDecoration(
                     labelText:
-                        "Digite seu email",
+                        "Quantidade de Times",
                   ),
                 ),
                 const SizedBox(height: 20),
